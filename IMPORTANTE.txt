@@ -1,0 +1,30 @@
+npn init -y
+Instalar mysql2 -- npn install mysql2
+instalar ejs html js -- npm install ejs
+
+
+
+npm install express ejs mysql2 express-session
+
+
+
+-- Tabla de roles
+CREATE TABLE roles (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(50) NOT NULL
+);
+
+-- Tabla de usuarios
+CREATE TABLE usuarios (
+  rut VARCHAR(12) NOT NULL PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL,
+  clave VARCHAR(255) NOT NULL,
+  rol_id INT,
+  FOREIGN KEY (rol_id) REFERENCES roles(id)
+);
+
+INSERT INTO roles (nombre) VALUES ('Administrador'), ('Usuario');
+
+INSERT INTO usuarios (rut, nombre, email, clave, rol_id)
+VALUES ('1111111-9', 'Ana Torres', 'ana@stt.com', '1234', 1);
